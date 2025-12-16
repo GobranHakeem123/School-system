@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>بيانات الصف والطلاب</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <label for="class">اختر الصف:</label>
+  <select id="class">
+    <option value="1">الصف الأول</option>
+    <option value="2">الصف الثاني</option>
+    <option value="3">الصف الثالث</option>
+  </select>
+
+  <button id="semester1">الفصل الدراسي الأول</button>
+  <button id="semester2">الفصل الدراسي الثاني</button>
+  
+  <table id="student-data-table">
+    <thead>
+      <tr>
+        <th>اسم الطالب</th>
+        <th>الشهر 1</th>
+        <th>الشهر 2</th>
+        <th>الشهر 3</th>
+        <th>المجموع</th>
+        <th>المعدل</th>
+      </tr>
+    </thead>
+    <tbody id="student-data-body"></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
