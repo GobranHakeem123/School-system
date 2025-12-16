@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>صفحة المدرسة</title>
+    <style>
+        .button {
+            display: block;
+            width: 150px;
+            height: 40px;
+            margin: 10px;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        .content {
+            display: none;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        function showContent(buttonId) {
+            var buttons = document.getElementsByClassName('button');
+            var content = document.getElementsByClassName('content');
+            
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].style.display = 'none';
+            }
+            
+            for (var j = 0; j < content.length; j++) {
+                content[j].style.display = 'none';
+            }
+            
+            var button = document.getElementById(buttonId);
+            var selectedContent = document.getElementById(buttonId + '-content');
+            
+            button.style.display = 'none';
+            selectedContent.style.display = 'block';
+        }
+        
+        function goBack() {
+            var buttons = document.getElementsByClassName('button');
+            var content = document.getElementsByClassName('content');
+            
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].style.display = 'block';
+            }
+            
+            for (var j = 0; j < content.length; j++) {
+                content[j].style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="button1" class="button" onclick="showContent('button1')">زر 1</button>
+    <button id="button2" class="button" onclick="showContent('button2')">زر 2</button>
+    <button id="button3" class="button" onclick="showContent('button3')">زر 3</button>
+    <button id="button4" class="button" onclick="showContent('button4')">زر 4</button>
+    <button id="button5" class="button" onclick="showContent('button5')">زر 5</button>
+
+    <div id="button1-content" class="content">
+        <!-- محتوى زر 1 يظهر هنا -->
+        <p>محتوى زر 1</p>
+    
+    </div>
+    <div id="button2-content" class="content">
+        <!-- محتوى زر 2 يظهر هنا -->
+        <p>محتوى زر 2</p>
+    </div>
+    <div id="button3-content" class="content">
+        <!-- محتوى زر 3 يظهر هنا -->
+        <p>محتوى زر 3</p>
+    </div>
+    <div id="button4-content" class="content">
+        <!-- محتوى زر 4 يظهر هنا -->
+        <p>محتوى زر 4</p>
+    </div>
+    <div id="button5-content" class="content">
+        <!-- محتوى زر 5 يظهر هنا -->
+        <p>محتوى زر 5</p>
+    </div>
+
+    <button onclick="goBack()">العودة</button>
+</body>
+</html>

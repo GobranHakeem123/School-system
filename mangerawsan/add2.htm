@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>إضافة المراحل الدراسية</title>
+  <style>
+    .content {
+      display: none;
+    }
+  </style>
+  <script>
+    function showContent() {
+      var addButton = document.getElementById("addButton");
+      var backButton = document.getElementById("backButton");
+      var content = document.getElementById("contenta");
+
+      addButton.style.display = "none";
+      backButton.style.display = "inline-block";
+      content.style.display = "block";
+    }
+
+    function goBack() {
+      var addButton = document.getElementById("addButton");
+      var backButton = document.getElementById("backButton");
+      var content = document.getElementById("contenta");
+
+      addButton.style.display = "inline-block";
+      backButton.style.display = "none";
+      content.style.display = "none";
+    }
+  </script>
+</head>
+<body>
+  <div>
+    <button id="addButton" onclick="showContent()">إضافة المراحل الدراسية</button>
+    <button id="backButton" style="display: none;" onclick="goBack()">رجوع</button>
+  </div>
+
+  <div id="contenta" class="conten">
+    <form method="post" action="add_class.php">
+      <input type="text" name="class_name" placeholder="اسم الصف">
+      <input type="submit" value="حفظ">
+    </form>
+  </div>
+</body>
+</html>
