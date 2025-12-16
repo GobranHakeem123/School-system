@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+    <title>اختيار الصورة</title>
+    <style>
+        .image-container {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #000;
+            margin-bottom: 20px;
+           
+        }
+    </style>
+    <script>
+        function previewImage(event) {
+            var imageContainer = document.getElementById('image-preview');
+            imageContainer.innerHTML = '';  // حذف الصورة التلقائية الحالية (إذا كانت موجودة)
+
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var img = document.createElement('img');
+                img.setAttribute('src', e.target.result);
+                img.setAttribute('alt', 'الصورة المختارة');
+                img.setAttribute('style', 'max-width: 100%; max-height: 100%;');
+                imageContainer.appendChild(img);
+                saveImage(e.target.result);  // حفظ الصورة على الخادم
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function saveImage(imageData) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'save_image.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log('تم حفظ الصورة بنجاح.');
+                }
+            };
+            xhr.send('imageData=' + imageData);
+        }
+    </script>
+</head>
+<body>
+    <h1>اختيار الصورة</h1>
+    <div class="image-container" id="image-preview">
+        <img src="get_image.php" alt="الصورة التلقائية">
+    </div>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" onchange="previewImage(event)">
+        <input type="submit" value="رفع الصورة">
+    </form>
+</body>
+</html>
